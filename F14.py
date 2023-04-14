@@ -17,7 +17,7 @@ def save(user : User, candi : Candi, bahan_bangunan : Bahan_Bangunan) -> None:
     file = open('./save/' + folder + '/' + "user.csv", "w")
     file.write("username;password;role\n")
     for i in range(user.Neff):
-        file.write(user.idx[i].username + ';' + user.idx[i].password + ";" + user.idx[i].role + '\n')
+        file.write(str(user.idx[i].username) + ';' + str(user.idx[i].password) + ";" + str(user.idx[i].role) + '\n')
     file.close()
 
     # write into candi csv file

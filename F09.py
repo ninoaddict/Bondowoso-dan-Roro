@@ -1,7 +1,6 @@
-import Global
-
+from Global import User, Candi, Bahan_Bangunan
 # TODO : 
-def sort_candi(candi : Global.Candi):
+def sort_candi(candi : list[Candi]):
     for i in range(candi.Neff):
         for j in range(candi.Neff - i - 1):
             if str(candi.idx[j].username) > str(candi.idx[j + 1].username):
@@ -10,7 +9,7 @@ def sort_candi(candi : Global.Candi):
                 candi.idx[j+1] = temp
 
 # TODO : 
-def laporanjin(user : Global.User, bahan_bangunan : Global.Bahan_Bangunan, candi : Global.Candi) -> None:
+def laporanjin(user : User, bahan_bangunan : Bahan_Bangunan, candi : Candi) -> None:
     jin_pembangun = jin_pengumpul = 0
     for i in range(user.Neff):
         if user.idx[i].role == "jin_pembangun":

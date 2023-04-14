@@ -12,6 +12,7 @@ from F11 import hancurkancandi
 from F12 import ayamberkokok
 from F13 import load
 from F14 import save
+from F15 import help
 from F16 import exit
 import Global
 
@@ -27,19 +28,19 @@ while True:
     elif masukan == "logout":
         logout()
     elif masukan == "summonjin" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
-        summonjin()
+        summonjin(Global.user)
     elif masukan == "hapusjin" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
-        hapusjin()
+        hapusjin(Global.user, Global.candi)
     elif masukan == "ubahjin" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
-        ubahjin()
+        ubahjin(Global.user)
     elif masukan == "bangun" and Global.ID != -1 and Global.user.idx[Global.ID].role == "jin_pembangun":
-        bangun(Global.user.idx[Global.ID].username)
+        bangun(Global.user.idx[Global.ID].username, Global.candi, Global.bahan_bangunan)
     elif masukan == "kumpul" and Global.ID != -1 and Global.user.idx[Global.ID].role == "jin_pengumpul":
-        kumpul()
+        kumpul(Global.bahan_bangunan)
     elif masukan == "batchkumpul" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
-        batchkumpul()
+        batchkumpul(Global.bahan_bangunan, Global.user)
     elif masukan == "batchbangun" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
-        batchbangun()
+        batchbangun(Global.user, Global.candi, Global.bahan_bangunan)
     elif masukan == "laporanjin" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":   
         laporanjin(Global.user, Global.bahan_bangunan, Global.candi)
     elif masukan == "laporancandi" and Global.ID != -1 and Global.user.idx[Global.ID].role == "bandung_bondowoso":
@@ -51,6 +52,9 @@ while True:
     elif masukan == "save":
         save(Global.user, Global.candi, Global.bahan_bangunan)
     elif masukan == "help":
-        pass
+        if Global.ID == -1:
+            help("belumlogin")
+        else:
+            help(Global.user.idx[Global.ID].role)
     elif masukan == "exit":
         exit()
