@@ -5,7 +5,7 @@ import Global
 # TODO : load main file
 def load() -> None:
     # initialize argument
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(usage="python main.py <nama_folder>")
     parser.add_argument("folder_name", help = "check the folder name", nargs = '?', default = '')
     args = parser.parse_args()
     # save folder name
@@ -13,7 +13,7 @@ def load() -> None:
     # check folder name
     if folder == "":
         print("\nTidak ada nama folder yang diberikan!")
-        print("\nUsage: python main.py <nama_folder>")
+        parser.print_usage()
         quit()
     elif os.path.isdir("./save/" + folder):
         print("\nLoading...\n")
