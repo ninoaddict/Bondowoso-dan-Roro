@@ -1,4 +1,5 @@
 from Global import User, Candi, Bahan_Bangunan
+import copy
 # TODO : 
 def sort_candi(candi : list[Candi]):
     for i in range(candi.Neff):
@@ -16,7 +17,7 @@ def laporanjin(user : User, bahan_bangunan : Bahan_Bangunan, candi : Candi) -> N
             jin_pembangun += 1
         elif user.idx[i].role == "jin_pengumpul":
             jin_pengumpul += 1
-    temp_candi = candi
+    temp_candi = copy.deepcopy(candi)
     sort_candi(temp_candi)
     jin_terajin = "-"
     jin_termalas = "-"
